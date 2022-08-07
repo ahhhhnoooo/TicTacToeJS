@@ -1,0 +1,26 @@
+#game {
+    display: flex;
+    flex-flow: column nowrap;
+}
+#game .row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+#game .cell {
+    height: 1em;
+    width: 1em;
+    border:1px solid black;
+    align-items: center;
+    justify-content: center;
+}
+#game .end {
+    z-index: 999;
+    position: absolute;
+    background: #888;
+    color: #fff;
+    opacity: 0.5;
+    height: 4em;
+    width: 4em;
+    text-align: center;
+    vertical-align: middle;
+}
