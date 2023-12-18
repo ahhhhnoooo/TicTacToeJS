@@ -1,49 +1,4 @@
-class Game {
-
-    board;
-    winner;
-    turn;
-
-    init = () => {
-        this.board = [];
-        this.winner = '';
-        this.turn = 'x';
-    }
-
-    onClick = (index) => {
-        if(this.winner) return;
-        this.board[index] = this.turn;
-
-        if (this.checkWinner()) {
-            this.winner = this.turn;
-        }
-        else {
-            this.nextTurn();
-        }
-    }
-
-    //Manually checking for the winner
-    checkWinner = () => {
-        if (
-            (this.turn === this.board[0] && this.turn === this.board[1] && this.turn === this.board[2]) ||
-            (this.turn === this.board[3] && this.turn === this.board[4] && this.turn === this.board[5]) ||
-            (this.turn === this.board[6] && this.turn === this.board[7] && this.turn === this.board[8]) ||
-            (this.turn === this.board[0] && this.turn === this.board[3] && this.turn === this.board[6]) ||
-            (this.turn === this.board[1] && this.turn === this.board[4] && this.turn === this.board[7]) ||
-            (this.turn === this.board[2] && this.turn === this.board[5] && this.turn === this.board[8]) ||
-            (this.turn === this.board[0] && this.turn === this.board[4] && this.turn === this.board[8]) ||
-            (this.turn === this.board[2] && this.turn === this.board[4] && this.turn === this.board[6])) {
-            console.log(this.turn, "WINS")
-                return true;
-        } else { return false; }
-
-    }
-
-    //Change to the other player's turn
-    nextTurn = () => {
-        this.turn = (this.turn === 'x') ? 'o' : 'x';
-    }
-}
+import { TicTacToeGame } from "./tictactoe-game";
 
 class HTMLRenderer {
 
@@ -83,7 +38,7 @@ class HTMLRenderer {
     }
 }
 
-let game = new Game();
+let game = new TicTacToeGame();
 game.init();
 let renderer = new HTMLRenderer();
 renderer.init(game);
