@@ -1,13 +1,14 @@
 import { TicTacToeGame } from "./tictactoe-game";
 
 class HTMLRenderer {
-
-    game;
-    spaces;
+    game = {
+        board: [],
+        winner: '',
+        turn: 'x'
+    }
 
     onClickSpace = (index) => {
-        this.spaces[index].innerText = this.game.turn;
-        this.game.onClick(index); 
+        this.game = TicTacToeGame.onClick(this.game, index); 
         if(this.game.winner){
             let gameElement = document.getElementById("game");
             let gameEndElement = document.createElement("div");
@@ -17,9 +18,7 @@ class HTMLRenderer {
         }
     }
 
-    init = (gameObj) => {
-        this.spaces = [];
-        this.game = gameObj;
+    init = () => {
         let gameElement = document.getElementById("game");
         let gameRowElement, gameCellElement;
         for (let index = 0; index < 9; ++index) {
@@ -34,11 +33,8 @@ class HTMLRenderer {
             this.spaces.push(gameCellElement)
             gameCellElement.onclick = (() => this.onClickSpace(index));
         }
-
     }
 }
 
-let game = new TicTacToeGame();
-game.init();
 let renderer = new HTMLRenderer();
 renderer.init(game);
