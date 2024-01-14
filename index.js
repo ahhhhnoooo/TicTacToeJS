@@ -1,13 +1,6 @@
-import { TicTacToeGame } from "./tictactoe-game";
-
 class HTMLRenderer {
-    game = {
-        board: [],
-        winner: '',
-        turn: 'x'
-    }
-
-    onClickSpace = (index) => {
+    onClickSpace = (index, element) => {
+        element.innerText = this.game.turn;
         this.game = TicTacToeGame.onClick(this.game, index); 
         if(this.game.winner){
             let gameElement = document.getElementById("game");
@@ -19,19 +12,19 @@ class HTMLRenderer {
     }
 
     init = () => {
+        this.game = TicTacToeGame.init();
         let gameElement = document.getElementById("game");
-        let gameRowElement, gameCellElement;
+        let gameRowElement;
         for (let index = 0; index < 9; ++index) {
             if (index % 3 === 0) {
                 gameRowElement = document.createElement("div");
                 gameRowElement.className = "row";
                 gameElement?.appendChild(gameRowElement);
             }
-            gameCellElement = document.createElement("div");
+            let gameCellElement = document.createElement("div");
             gameCellElement.className = "cell";
             gameRowElement.appendChild(gameCellElement);
-            this.spaces.push(gameCellElement)
-            gameCellElement.onclick = (() => this.onClickSpace(index));
+            gameCellElement.onclick = (() => this.onClickSpace(index, gameCellElement));
         }
     }
 }

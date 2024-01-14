@@ -1,4 +1,4 @@
-export class TicTacToeGame {
+class TicTacToeGame {
     static onClick = (game, index) => {
         let result = game;
         if (game.winner === '') {
@@ -41,5 +41,13 @@ export class TicTacToeGame {
     //Change to the other player's turn
     static nextTurn = (turn) => {
          return (turn === 'x') ? 'o' : 'x';
+    }
+
+    static init = () => {
+        return {
+            board: [],
+            winner: '',
+            turn: 'x'
+        }
     }
 }
