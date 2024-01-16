@@ -1,5 +1,7 @@
 class TicTacToeGame {
     static onClick = (game, index) => {
+        //If space is already taken, do nothing
+        if (game.board[index]) return game;
         let result = game;
         if (game.winner === '') {
             //Clone the game object

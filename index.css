@@ -1,26 +1,35 @@
-#game {
+#game .board {
     display: flex;
     flex-flow: column nowrap;
 }
+
 #game .row {
     display: flex;
     flex-flow: row nowrap;
 }
+
 #game .cell {
-    height: 1em;
-    width: 1em;
-    border:1px solid black;
+    height: 200px;
+    width: 200px;
+    font-size: 200px;
+    border: 2px solid black;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
+
 #game .end {
     z-index: 999;
     position: absolute;
     background: #888;
     color: #fff;
+    font-size: 100px;
     opacity: 0.5;
-    height: 4em;
-    width: 4em;
-    text-align: center;
-    vertical-align: middle;
+    height: 612px;
+    width: 612px;
+    top: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
